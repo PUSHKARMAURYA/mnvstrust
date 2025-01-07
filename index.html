@@ -36,7 +36,7 @@
         .tent img,
         .tent video {
             height: 300px;
-            width: 275px;
+            width: 300px;
             border-radius: 5px;
             margin-bottom: 10px;
             cursor: pointer;
@@ -46,8 +46,10 @@
             gap: 10px;
             flex-wrap: wrap;
         }
-        .tent-images img {
+        .tent-images img,
+        .tent-images .video-container {
             width: calc(20% - 10px);
+            position: relative;
         }
         ul {
             list-style: none;
@@ -86,6 +88,18 @@
             padding: 5px 10px;
             border-radius: 50%;
         }
+        .video-container .video-icon {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 50px;
+            color: white;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 10px;
+            border-radius: 50%;
+            pointer-events: none; /* Prevent icon from interfering with video clicks */
+        }
         @media (max-width: 768px) {
             .tent-images img,
             .tent-images video {
@@ -123,7 +137,10 @@
             <div class="tent-images">
                 <img src="home.jpg" alt="Tent 1" onclick="openPopup('home.jpg')">
                 <img src="tree.jpg" alt="Tent 2" onclick="openPopup('tree.jpg')">
-                <video src="tour.mp4" alt="Tent Video" onclick="openVideoPopup('tour.mp4')" muted></video>
+                <div class="video-container">
+                    <video src="tour.mp4" muted onclick="openVideoPopup('tour.mp4')"></video>
+                    <div class="video-icon" onclick="openVideoPopup('tour.mp4')">▶</div>
+                </div>
                 <img src="washroom.jpg" alt="Tent 4" onclick="openPopup('washroom.jpg')">
                 <img src="bed2.jpg" alt="Tent 5" onclick="openPopup('bed2.jpg')">
             </div>
@@ -183,9 +200,6 @@
     </div>
 
     <script>
-        const images = ['home.jpg', 'tree.jpg', 'washroom.jpg', 'bed2.jpg'];
-        let currentIndex = 0;
-
         function openPopup(imageSrc) {
             const popup = document.getElementById('imagePopup');
             const popupImage = document.getElementById('popupImage');
