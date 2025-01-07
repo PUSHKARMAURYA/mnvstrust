@@ -92,6 +92,35 @@
                 width: 100%; /* Stack images */
             }
         }
+        .video-container {
+            position: relative;
+            display: inline-block;
+            width: 285px; /* Adjust width as per your requirement */
+            height: 300px;
+            align-self: center;
+        }
+
+        .video-container video {
+            width: 275px;
+            
+            align-self: center;
+            height: 300px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .video-container .icon-overlay {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 50px;
+            color: white;
+            background: rgba(0, 0, 0, 0.6);
+            padding: 10px 20px;
+            border-radius: 50%;
+            pointer-events: none; /* Prevent the icon from interfering with video clicks */
+        }
     </style>
 </head>
 <body>
@@ -123,7 +152,10 @@
             <div class="tent-images">
                 <img src="home.jpg" alt="Tent 1" onclick="openPopup('home.jpg')">
                 <img src="tree.jpg" alt="Tent 2" onclick="openPopup('tree.jpg')">
-                <video src="tour.mp4" alt="Tent Video" onclick="openVideoPopup('tour.mp4')" muted></video>
+                <div class="video-container">
+                    <video src="tour.mp4" alt="Tent Video" onclick="openVideoPopup('tour.mp4')" muted></video>
+                    <div class="icon-overlay">▶</div>
+                </div>
                 <img src="washroom.jpg" alt="Tent 4" onclick="openPopup('washroom.jpg')">
                 <img src="bed2.jpg" alt="Tent 5" onclick="openPopup('bed2.jpg')">
             </div>
