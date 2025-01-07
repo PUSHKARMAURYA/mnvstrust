@@ -11,11 +11,16 @@
             margin: 0;
             padding: 0;
         }
+        .header-image {
+            width: 100%;
+            height: 180px;
+            display: block;
+        }
         header {
             background: #673ab7;
             color: #fff;
-            padding: 20px;
             text-align: center;
+            padding: 20px;
         }
         nav a {
             margin: 0 10px;
@@ -28,9 +33,21 @@
         h2 {
             color: #673ab7;
         }
-        .tent img {
-            max-width: 100%;
+        .tent img,
+        .tent video {
+            height: 300px;
+            width: 275px;
             border-radius: 5px;
+            margin-bottom: 10px;
+            cursor: pointer;
+        }
+        .tent-images {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        .tent-images img {
+            width: calc(20% - 10px);
         }
         ul {
             list-style: none;
@@ -39,9 +56,48 @@
         ul li {
             margin: 10px 0;
         }
+        /* Popup Styles */
+        .popup {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+        .popup img,
+        .popup video {
+            max-width: 90%;
+            max-height: 90%;
+            border-radius: 5px;
+        }
+        .popup .close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 30px;
+            color: #fff;
+            cursor: pointer;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 5px 10px;
+            border-radius: 50%;
+        }
+        @media (max-width: 768px) {
+            .tent-images img,
+            .tent-images video {
+                width: 100%; /* Stack images */
+            }
+        }
     </style>
 </head>
 <body>
+    <!-- Full-width header image -->
+    <img src="home2.jpg" alt="Trust Banner" class="header-image">
+
     <header>
         <h1>MNVS Trust</h1>
         <p>Madhavi Naval Vriddhaashrya and Shikshan Trust</p>
@@ -64,7 +120,13 @@
         <h2>Tents</h2>
         <div class="tent">
             <h3>Available Tent Details</h3>
-            <img src="/download.jpg" alt="Tent">
+            <div class="tent-images">
+                <img src="home.jpg" alt="Tent 1" onclick="openPopup('home.jpg')">
+                <img src="tree.jpg" alt="Tent 2" onclick="openPopup('tree.jpg')">
+                <video src="tour.mp4" alt="Tent Video" onclick="openVideoPopup('tour.mp4')" muted></video>
+                <img src="washroom.jpg" alt="Tent 4" onclick="openPopup('washroom.jpg')">
+                <img src="bed2.jpg" alt="Tent 5" onclick="openPopup('bed2.jpg')">
+            </div>
             <p><strong>Amenities:</strong> 6x6 Bed, Mattresses, Attached Bathroom, Drinking Water</p>
             <p><strong>Capacity:</strong> Maximum 2 Persons Per Tent</p>
             <p><strong>Important Notes:</strong></p>
@@ -102,11 +164,49 @@
         <h2>Contact Us</h2>
         <p><strong>Email:</strong> mnvstrust@gmail.com</p>
         <p><strong>Phone:</strong> 9140806620</p>
-        <p><strong>Address:</strong> Sampanna Nagar Colony, Dewarakh Uparhar, Karchanna (Near DPS School),Prayagraj - 211008</p>
+        <p><strong>Address:</strong> Sampanna Nagar Colony, Dewarakh Uparhar, Karchanna (Near DPS School), Prayagraj - 211008</p>
         <p><strong>Nearest Railway Station:</strong> Chheoki Junction, Naini Railway Station Prayagraj</p>
         <p><strong>Google Maps Link:</strong> 
             <a href="https://maps.app.goo.gl/dxj8vUdX4QqwZWZv8" target="_blank">View Location on Google Maps</a>
         </p>
     </section>
+
+    <!-- Popup -->
+    <div class="popup" id="imagePopup">
+        <span class="close" onclick="closePopup()">×</span>
+        <img src="" alt="Popup Image" id="popupImage">
+    </div>
+
+    <div class="popup" id="videoPopup">
+        <span class="close" onclick="closePopup()">×</span>
+        <video src="" controls autoplay id="popupVideo"></video>
+    </div>
+
+    <script>
+        const images = ['home.jpg', 'tree.jpg', 'washroom.jpg', 'bed2.jpg'];
+        let currentIndex = 0;
+
+        function openPopup(imageSrc) {
+            const popup = document.getElementById('imagePopup');
+            const popupImage = document.getElementById('popupImage');
+            popupImage.src = imageSrc;
+            popup.style.display = 'flex';
+        }
+
+        function openVideoPopup(videoSrc) {
+            const popup = document.getElementById('videoPopup');
+            const popupVideo = document.getElementById('popupVideo');
+            popupVideo.src = videoSrc;
+            popup.style.display = 'flex';
+        }
+
+        function closePopup() {
+            const popupImage = document.getElementById('imagePopup');
+            const popupVideo = document.getElementById('videoPopup');
+            popupImage.style.display = 'none';
+            popupVideo.style.display = 'none';
+            document.getElementById('popupVideo').pause();
+        }
+    </script>
 </body>
 </html>
