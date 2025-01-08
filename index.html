@@ -102,8 +102,6 @@
 
         .video-container video {
             width: 275px;
-            
-            align-self: center;
             height: 300px;
             border-radius: 5px;
             cursor: pointer;
@@ -121,6 +119,15 @@
             border-radius: 50%;
             pointer-events: none; /* Prevent the icon from interfering with video clicks */
         }
+        .payment-qr {
+            text-align: center;
+            margin: 20px 0;
+        }
+        .payment-qr img {
+            max-width: 250px;
+            border: 2px solid #673ab7;
+            border-radius: 10px;
+        }
     </style>
 </head>
 <body>
@@ -133,10 +140,11 @@
         <nav>
             <a href="#about">About</a>
             <a href="#tents">Tents</a>
-            <a href="#pricing">Pricing</a>
+            <a href="#pricing">Pricing and Payment</a>
             <a href="#services">Services</a>
             <a href="#team">Our Team</a>
             <a href="#contact">Contact</a>
+            
         </nav>
     </header>
 
@@ -153,11 +161,11 @@
                 <img src="home.jpg" alt="Tent 1" onclick="openPopup('home.jpg')">
                 <img src="tree.jpg" alt="Tent 2" onclick="openPopup('tree.jpg')">
                 <div class="video-container">
-                    <video src="tour.mp4" alt="Tent Video" onclick="openVideoPopup('tour.mp4')" muted></video>
+                    <video src="v2.mp4" alt="Tent Video" onclick="openVideoPopup('v2.mp4')" muted></video>
                     <div class="icon-overlay">▶</div>
                 </div>
                 <img src="washroom.jpg" alt="Tent 4" onclick="openPopup('washroom.jpg')">
-                <img src="bed2.jpg" alt="Tent 5" onclick="openPopup('bed2.jpg')">
+                <img src="b3.jpg" alt="Tent 5" onclick="openPopup('b2.jpg')">
             </div>
             <p><strong>Amenities:</strong> 6x6 Bed, Mattresses, Attached Bathroom, Drinking Water</p>
             <p><strong>Capacity:</strong> Maximum 2 Persons Per Tent</p>
@@ -169,9 +177,18 @@
         </div>
     </section>
 
-    <section id="pricing">
-        <h2>Pricing</h2>
-        <p><strong>Contact:</strong> 9140806620 (Negotiable)</p>
+
+    
+    <section id="#pricing">
+        <h2>Payment and Pricing</h2>
+        <p><strong>Price:</strong> Rs 3000 Per Day Per Room (Negotiable)</p>
+        <p><strong>Contact:</strong> 9140806620, 9452874263 ,9415252674</p>
+        <p>You can make the payment via the QR code below:</p>
+        <div class="payment-qr">
+            <img src="pay.jpg" alt="Payment QR Code">
+        </div>
+        <p><strong>UPI ID:</strong> madhavinaval@oksbi</p>
+        <p>After completing the payment, please share the payment receipt with us at <strong>9140806620</strong> for confirmation.</p>
     </section>
 
     <section id="services">
@@ -195,13 +212,14 @@
     <section id="contact">
         <h2>Contact Us</h2>
         <p><strong>Email:</strong> mnvstrust@gmail.com</p>
-        <p><strong>Phone:</strong> 9140806620</p>
+        <p><strong>Phone:</strong> 9140806620,9452874263,9415252674</p>
         <p><strong>Address:</strong> Sampanna Nagar Colony, Dewarakh Uparhar, Karchanna (Near DPS School), Prayagraj - 211008</p>
         <p><strong>Nearest Railway Station:</strong> Chheoki Junction, Naini Railway Station Prayagraj</p>
         <p><strong>Google Maps Link:</strong> 
             <a href="https://maps.app.goo.gl/dxj8vUdX4QqwZWZv8" target="_blank">View Location on Google Maps</a>
         </p>
     </section>
+
 
     <!-- Popup -->
     <div class="popup" id="imagePopup">
